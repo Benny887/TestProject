@@ -1,0 +1,96 @@
+<html>
+
+<body>
+<div>
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+
+<div>
+    <form method ="post" action="add">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="animalType" placeholder="Тип животного"required>
+        <input type="text" name="birthDate" placeholder="Д/рожд. YYYY-MM-DD"required>
+        <input type="text" name="sex" placeholder="Пол"required>
+        <input type="text" name="nickName" placeholder="Кличка"required>
+        <button type="submit">Добавить животное</button>
+    </form>
+</div>
+
+
+<div>
+    <form method ="post" action="mody">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="id" placeholder="Id"required>
+        <input type="text" name="animalType" placeholder="Тип животного"required>
+        <input type="text" name="birthDate" placeholder="Д/рожд. YYYY-MM-DD"required>
+        <input type="text" name="sex" placeholder="Пол"required>
+        <input type="text" name="nickName" placeholder="Кличка"required>
+        <button type="submit">Редактировать животное</button>
+    </form>
+</div>
+
+
+<div>
+    <form method ="post" action="del">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="id" placeholder="Id"required>
+        <button type="submit">Удалить животное по Id</button>
+    </form>
+</div>
+
+
+<div>
+    <form method ="get" action="show">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <button type="submit">Вывести все данные</button>
+    </form>
+</div>
+
+
+<form method="post" action="filterByMaster">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <button type="submit">Получить список своих животных</button>
+</form>
+
+
+
+<form method="post" action="filterById" >
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="text" name="filterById" placeholder="Id"required>
+    <button type="submit">Получить детали животного по Id</button>
+</form>
+
+<div>Результаты запроса:</div>
+{{#types}}
+    <div>
+        <span>{{types}}</span>
+    </div>
+{{/types}}
+
+{{#details}}
+    <div>
+        <b>Идентификатор животного - {{id}}</b><br>
+        <span>Хозяин - {{masterName}}</span><br>
+        <span>Тип животного - {{animalType}}</span><br>
+        <span>Дата рождения - {{birthDate}}</span><br>
+        <span>Пол - {{sex}}</span><br>
+        <span>Кличка - {{nickName}}</span>
+    </div>
+{{/details}}
+
+{{#animals}}
+<div>
+    <b>{{id}}</b>
+    <span>{{masterName}}</span>
+    <span>{{animalType}}</span>
+    <span>{{birthDate}}</span>
+    <span>{{sex}}</span>
+    <span>{{nickName}}</span>
+</div>
+    {{/animals}}
+    </body>
+    </html>
