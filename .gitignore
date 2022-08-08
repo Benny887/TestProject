@@ -3,7 +3,7 @@
 *.iws
 *.log
 *.class
-*.jar
+#*.jar
 *.war
 *.ear
 .mtj.tmp/
